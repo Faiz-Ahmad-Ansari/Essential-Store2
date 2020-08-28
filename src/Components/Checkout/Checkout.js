@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../Common/Header/Header';
 import Button from '../Reusable/Button/Button';
+import Input from '../Reusable/Input/Input';
 
 class Checkout extends Component {
     constructor(props) {
@@ -102,34 +103,78 @@ class Checkout extends Component {
         return {...stateObj}        
     }
 
-    renderOutputs = () => {
-        let stateObj = {...this.state.data}
 
-       return Object.values(stateObj).map(
-            (e) => {
-             return Object.values(e).map(
-                    (val,i) => {
-                        return(
-                                <div className='col-12 col-md-6 mt-2 mb-3' key={i}>
-                                    <div className='row'>
-                                        <div className='col-12 col-md-4 d-flex align-items-end'>
-                                            <label >{val.fieldName}</label>
-                                        </div>
-                                        <div className='col-12 col-md-8'>
-                                            <div className="form-group mb-0">                                   
-                                                <input 
-                                                    type='text' className={`form-control `}
-                                                    value={`${val.value}${val.additional}`} disabled={true} />                                                                   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>        
-                         )
-                    }
-                )
-            }
+    renderTable = () => {
+
+        let order ={...this.state.data}
+
+        return (        
+        <>
+            <div className='col-12 col-md-6'>
+                <table className="table">
+                    <thead>
+                        <tr className='bg-secondary text-white'>
+                            <th scope="col"></th>
+                            <th scope="col">U.K</th>                                                                
+                            <th scope="col"></th>                                                                
+                        </tr>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Qty.</th>
+                            <th scope="col">Price</th>                                
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Mask</th>
+                            <td>{order.ukInventory.maskQty.value}</td>
+                            <td>{order.ukInventory.maskPrice.value} £</td>                            
+                        </tr>
+                        <tr>
+                            <th scope="row">Gloves</th>
+                            <td>{order.ukInventory.glovesQty.value}</td>
+                            <td>{order.ukInventory.glovesPrice.value} £</td>                            
+                        </tr>            
+                    </tbody>
+                </table>                    
+            </div>
+            <div className='col-12 col-md-6'>
+                <table className="table">
+                    <thead>
+                        <tr className='bg-secondary text-white'>
+                            <th scope="col"></th>
+                            <th scope="col">Germany</th>                                                                
+                            <th scope="col"></th>                                                                
+                        </tr>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Qty.</th>
+                            <th scope="col">Price</th>                                
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Mask</th>
+                            <td>{order.germanyInventory.maskQty.value}</td>
+                            <td>{order.germanyInventory.maskPrice.value} £</td>
+                            
+                        </tr>
+                        <tr>
+                            <th scope="row">Gloves</th>
+                            <td>{order.germanyInventory.glovesQty.value}</td>
+                            <td>{order.germanyInventory.glovesPrice.value} £</td>                            
+                        </tr>            
+                    </tbody>
+                </table>
+            </div>
+        
+            <Input fieldName={order.shippingCharge.mask.fieldName} value={`${order.shippingCharge.mask.value}${order.shippingCharge.mask.additional}`} /> 
+            <Input fieldName={order.shippingCharge.gloves.fieldName} value={`${order.shippingCharge.gloves.value}${order.shippingCharge.gloves.additional}`} /> 
+            <Input fieldName={order.totalPrice.totalPrice.fieldName} value={`${order.totalPrice.totalPrice.value}${order.totalPrice.totalPrice.additional}`} labelClass='font-weight-bold' inputClass='hasRequired' /> 
+            
+        </>
+        
         )
-
     }
 
     buyNow = () => {
@@ -148,29 +193,28 @@ Click on "Home Page" to Order Again`)
         return ( 
             <>
                 <Header />
+               <div className='text-center font-weight-bold border'>Order Details</div>                
                 <div className='row p-0 m-3 '>
-                    {this.renderOutputs()}                        
+                    {this.renderTable()}
                 </div>
                 <div className='row p-0 m-3 '>
                     <div className='col-12 col-md-6 p-1'>
+
                         {this.state.totalPrice.totalPrice.value === 0 || this.state.totalPrice.totalPrice.value === '' || this.state.ordered ?
-                        <Button className=' disabled not-allowed' name='Buy Now' />
-                        :
-                        <Button name='Buy Now' onClick={this.buyNow}/>                        
-                    }
+                            <Button className=' disabled not-allowed' name='Buy Now' />
+                            :
+                            <Button name='Buy Now' onClick={this.buyNow}/>                        
+                        }
                     </div>                        
                     <div className='col-12 col-md-6 p-1'>
                         {this.state.ordered ?
-                        <Link to={{
-                            pathname:'/',
-                            state:this.props.location.state
-                        }}>
-                            <Button  name='Home Page'/>
-                        </Link> :
-                        <Link to='/'>
-                            <Button  name='Home Page'/>
-                        </Link>
-                        }
+                            <Link to={{ pathname:'/', state:this.props.location.state }}>
+                                <Button  name='Home Page'/>
+                            </Link> :
+                            <Link to='/'>
+                                <Button  name='Home Page'/>
+                            </Link>
+                            }
                     </div>                        
                 </div>
             </>

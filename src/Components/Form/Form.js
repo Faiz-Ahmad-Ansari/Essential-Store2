@@ -354,28 +354,7 @@ Total ${(inventory.ukInventory.glovesQty + inventory.germanyInventory.glovesQty)
   
         this.calculations(stateObj)
         this.setState({...stateObj})
-    }
-
-    checkInventory = () => {
-        const inventory = {...this.props.inventory}
-        let stock = `
-- "${inventory.ukInventory.maskQty}" No. of Mask Available in U.K Inventory
-- ${inventory.ukInventory.maskPrice } £ Per Unit Price of Mask in U.K Inventory
-
-- "${ inventory.ukInventory.glovesQty }" No. Gloves available U.K Inventory
-- ${ inventory.ukInventory.glovesPrice } £ Per Unit Price of Gloves U.K Inventory
-
-- "${ inventory.germanyInventory.maskQty }" No. Mask Available in Germany Inventory 
-- ${ inventory.germanyInventory.maskPrice } £ Per Unit Price of Mask in Germany Inventory 
-
-- "${ inventory.germanyInventory.glovesQty }" No. Gloves Available in Germany Inventory 
-- ${ inventory.germanyInventory.glovesPrice } £ Per Unit Price of Gloves in Germany Inventory
-` 
-
-        alert(stock)
-    }
-
-     
+    }     
 
     render() { 
         return (
