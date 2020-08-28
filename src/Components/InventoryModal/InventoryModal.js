@@ -18,14 +18,14 @@ const InventoryModal = props => {
                   <div className="modal-body">
                     <table className="table">
                         <thead>
-                            <tr className='bg-success text-white'>
+                            <tr className='bg-secondary text-white'>
                                 <th scope="col"></th>
                                 <th scope="col">U.K</th>                                                                
                                 <th scope="col"></th>                                                                
                             </tr>
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col">Qty.</th>
+                                <th scope="col">Available Qty.</th>
                                 <th scope="col">Unit Price</th>                                
                             </tr>
                         </thead>
@@ -47,14 +47,14 @@ const InventoryModal = props => {
                     </table>
                     <table className="table">
                         <thead>
-                            <tr className='bg-success text-white'>
+                            <tr className='bg-secondary text-white'>
                                 <th scope="col"></th>
                                 <th scope="col">Germany</th>                                                                
                                 <th scope="col"></th>                                                                
                             </tr>
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col">Qty.</th>
+                                <th scope="col">Available Qty.</th>
                                 <th scope="col">Unit Price</th>                                
                             </tr>
                         </thead>
