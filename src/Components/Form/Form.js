@@ -329,8 +329,8 @@ class Form extends Component {
         stateObj.redirectToCheckout = true
         stateObj.orderObj = order
     }else{        
-        alert(`Only ${(inventory.ukInventory.maskQty + inventory.germanyInventory.maskQty)} Mask available in inventory 
-Only ${(inventory.ukInventory.glovesQty + inventory.germanyInventory.glovesQty)} Gloves available in inventory`)
+        alert(`Total ${(inventory.ukInventory.maskQty + inventory.germanyInventory.maskQty)} Mask available in inventory 
+Total ${(inventory.ukInventory.glovesQty + inventory.germanyInventory.glovesQty)} Gloves available in inventory`)
     }
     }
 
@@ -354,6 +354,23 @@ Only ${(inventory.ukInventory.glovesQty + inventory.germanyInventory.glovesQty)}
         this.calculations(stateObj)
         this.setState({...stateObj})
     }
+
+    checkInventory = () => {
+        const inventory = {...this.props.inventory}
+        let stock = `
+        - "${inventory.ukInventory.maskQty}" No. of Mask Available in U.K Inventory
+        - ${inventory.ukInventory.maskPrice } £ Per Unit Price of Mask in U.K Inventory
+        - "${ inventory.ukInventory.glovesQty }" No. Gloves available U.K Inventory
+        - ${ inventory.ukInventory.glovesPrice } £ Per Unit Price of Gloves U.K Inventory
+        - "${ inventory.germanyInventory.maskQty }" No. Mask available in Germany Inventory 
+        - ${ inventory.germanyInventory.maskPrice } £ Per Unit Price Mask in Germany Inventory 
+        - "${ inventory.germanyInventory.glovesQty }" No. Gloves available in Germany Inventory 
+        - ${ inventory.germanyInventory.glovesPrice } £ Per Unit Price Gloves in Germany Inventory
+        ` 
+
+        alert(stock)
+    }
+
      
 
     render() { 
@@ -363,8 +380,11 @@ Only ${(inventory.ukInventory.glovesQty + inventory.germanyInventory.glovesQty)}
                     {this.renderInputs()}                        
                 </div>
                 <div className='row p-0 m-3 '>
-                   <div className='col-12'>
-                        <Button className='btn-primary w-100' name='Checkout' onClick={this.submitHandler}/>                                                
+                   <div className='col-12 col-md-6 mt-1'>
+                        <Button name='Checkout' onClick={this.submitHandler}/>                                                
+                    </div>
+                   <div className='col-12 col-md-6 mt-1'>
+                        <Button name='Check Inventory' onClick={this.checkInventory}/>                                                
                     </div>
                 </div>
                 {this.state.redirectToCheckout && <Redirect to={{ pathname : "/checkout",state : this.state.orderObj}}/>}                        

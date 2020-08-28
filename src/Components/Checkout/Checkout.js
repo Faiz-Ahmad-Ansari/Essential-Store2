@@ -154,9 +154,9 @@ Click on "Home Page" to Order Again`)
                 <div className='row p-0 m-3 '>
                     <div className='col-12 col-md-6 p-1'>
                         {this.state.totalPrice.totalPrice.value === 0 || this.state.totalPrice.totalPrice.value === '' || this.state.ordered ?
-                        <Button className='btn-primary w-100 disabled not-allowed' name='Buy Now' />
+                        <Button className=' disabled not-allowed' name='Buy Now' />
                         :
-                        <Button className='btn-primary w-100' name='Buy Now' onClick={this.buyNow}/>                        
+                        <Button name='Buy Now' onClick={this.buyNow}/>                        
                     }
                     </div>                        
                     <div className='col-12 col-md-6 p-1'>
@@ -165,10 +165,10 @@ Click on "Home Page" to Order Again`)
                             pathname:'/',
                             state:this.props.location.state
                         }}>
-                            <Button className='btn-primary w-100' name='Home Page'/>
+                            <Button  name='Home Page'/>
                         </Link> :
                         <Link to='/'>
-                            <Button className='btn-primary w-100' name='Home Page'/>
+                            <Button  name='Home Page'/>
                         </Link>
                         }
                     </div>                        
