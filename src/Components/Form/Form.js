@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import './Form.css';
 import validations from '../Reusable/Validations';
 import Button from '../Reusable/Button/Button';
+import InventoryModal from '../InventoryModal/InventoryModal';
 const requiredError = 'This field is mandatory';
 
 class Form extends Component {
@@ -360,10 +361,13 @@ Total ${(inventory.ukInventory.glovesQty + inventory.germanyInventory.glovesQty)
         let stock = `
 - "${inventory.ukInventory.maskQty}" No. of Mask Available in U.K Inventory
 - ${inventory.ukInventory.maskPrice } £ Per Unit Price of Mask in U.K Inventory
+
 - "${ inventory.ukInventory.glovesQty }" No. Gloves available U.K Inventory
 - ${ inventory.ukInventory.glovesPrice } £ Per Unit Price of Gloves U.K Inventory
+
 - "${ inventory.germanyInventory.maskQty }" No. Mask Available in Germany Inventory 
 - ${ inventory.germanyInventory.maskPrice } £ Per Unit Price of Mask in Germany Inventory 
+
 - "${ inventory.germanyInventory.glovesQty }" No. Gloves Available in Germany Inventory 
 - ${ inventory.germanyInventory.glovesPrice } £ Per Unit Price of Gloves in Germany Inventory
 ` 
@@ -384,10 +388,13 @@ Total ${(inventory.ukInventory.glovesQty + inventory.germanyInventory.glovesQty)
                         <Button name='Checkout' onClick={this.submitHandler}/>                                                
                     </div>
                    <div className='col-12 col-md-6 mt-1'>
-                        <Button name='Check Inventory' onClick={this.checkInventory}/>                                                
+                        <Button name='Check Inventory' dataToggle="modal" dataTarget="#inventoryModal" />                                                
                     </div>
                 </div>
-                {this.state.redirectToCheckout && <Redirect to={{ pathname : "/checkout",state : this.state.orderObj}}/>}                        
+                {this.state.redirectToCheckout && <Redirect to={{ pathname : "/checkout",state : this.state.orderObj}}/>}                       
+
+                <InventoryModal inventory = {this.props.inventory} />
+            
             </>
          );
     }
