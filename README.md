@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## The Essentials Shop 
+
+Inventory Management of a recently a new online store opened on the internet that sells Mask & Gloves.
+( Completely Responsive Web App )
+
+## Work Flow
+
+- Fill the mandatory details and click on checkout to get the price of items
+ (if no. of qty. exceeds then popup will appear to get the inventory details after clicking on checkout button ).
+- Then click on buy now to get order placed.(pop up will apear after succesful order placed)
+- Then Click on Home page to order again (PLEASE NOTE : NO. OF QTY. REDUCED IN INVENTORY)
+
 ## Available Scripts
 
 In the project directory, you can run:

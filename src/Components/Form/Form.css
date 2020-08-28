@@ -1,0 +1,7 @@
+.hasRequired{
+    border-color: #389e38 !important;
+    background-color: #e2ffddb0 !important;
+}
+.hasError{
+    border-color: red !important;
+}
