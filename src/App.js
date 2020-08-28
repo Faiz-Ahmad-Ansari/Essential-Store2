@@ -1,12 +1,15 @@
 import React from 'react';
 import RouterComponent from './RouterComponent';
+import ErrorBoundary from './Components/ErrorBoundary/ErrorBoundary';
 
 
 function App() {
   return (
-    <div >
-        <RouterComponent />
-    </div>
+    <ErrorBoundary>
+      <div >
+          <RouterComponent />
+      </div>
+    </ErrorBoundary>
   );
 }
 
