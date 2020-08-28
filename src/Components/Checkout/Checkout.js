@@ -160,12 +160,17 @@ Click on "Home Page" to Order Again`)
                     }
                     </div>                        
                     <div className='col-12 col-md-6 p-1'>
+                        {this.state.ordered ?
                         <Link to={{
                             pathname:'/',
                             state:this.props.location.state
                         }}>
                             <Button className='btn-primary w-100' name='Home Page'/>
+                        </Link> :
+                        <Link to='/'>
+                            <Button className='btn-primary w-100' name='Home Page'/>
                         </Link>
+                        }
                     </div>                        
                 </div>
             </>
