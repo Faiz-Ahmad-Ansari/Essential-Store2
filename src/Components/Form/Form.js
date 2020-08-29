@@ -370,7 +370,10 @@ Total ${(inventory.ukInventory.glovesQty + inventory.germanyInventory.glovesQty)
                         <Button name='Check Inventory' dataToggle="modal" dataTarget="#inventoryModal" />                                                
                     </div>
                 </div>
-                {this.state.redirectToCheckout && <Redirect to={{ pathname : "/checkout",state : this.state.orderObj}}/>}                       
+                {this.state.redirectToCheckout && <Redirect to={{ 
+                    pathname : "/checkout",
+                    state : {orderObj:this.state.orderObj, inventory:this.props.inventory}
+                    }}/>}                       
 
                 <InventoryModal inventory = {this.props.inventory} />
             

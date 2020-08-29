@@ -45,13 +45,12 @@ class Homepage extends Component {
         let prevOrder = this.props.location.state
         let inventory = stateObj.inventory
 
-        inventory.ukInventory.maskQty = inventory.ukInventory.maskQty - prevOrder.ukInventory.maskQty 
-        inventory.ukInventory.glovesQty = inventory.ukInventory.glovesQty - prevOrder.ukInventory.glovesQty 
-        inventory.germanyInventory.maskQty = inventory.germanyInventory.maskQty - prevOrder.germanyInventory.maskQty 
-        inventory.germanyInventory.glovesQty = inventory.germanyInventory.glovesQty - prevOrder.germanyInventory.glovesQty 
+        inventory.ukInventory.maskQty =  prevOrder.ukInventory.maskQty 
+        inventory.ukInventory.glovesQty =  prevOrder.ukInventory.glovesQty 
+        inventory.germanyInventory.maskQty =  prevOrder.germanyInventory.maskQty 
+        inventory.germanyInventory.glovesQty =  prevOrder.germanyInventory.glovesQty 
     
         this.setState({...stateObj})
-        console.log(inventory)
     }
 
     render() { 
@@ -61,9 +60,7 @@ class Homepage extends Component {
                 <div className='row justify-content-center m-2'>
                     { this.state.products.map((e,i) => <Products key={i} data={this.state.products[i]} />) }
                 </div>
-                <Form 
-                    inventory={this.state.inventory}
-                />
+                <Form inventory={this.state.inventory}/>
             </>
          );
     }

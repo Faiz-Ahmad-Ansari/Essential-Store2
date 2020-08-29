@@ -74,7 +74,17 @@ class Checkout extends Component {
                     }
                 },
             },
-            ordered : false
+            ordered : false,
+            newInventory : {
+                ukInventory : {
+                    maskQty : '',
+                    glovesQty : '',
+                },
+                germanyInventory : {
+                    maskQty : '',
+                    glovesQty : '',
+                }
+            }
          }
     }
 
@@ -85,7 +95,7 @@ class Checkout extends Component {
         }
 
         let stateObj = {...state.data}
-        let propsObj = props.location.state
+        let propsObj = props.location.state.orderObj
 
         Object.entries(propsObj).map(
             ([key,val]) => {
@@ -183,7 +193,17 @@ class Checkout extends Component {
             alert(`Please Add Atleast 1 item to Buy
             Click on "Home Page" to Order`)
         }else {
-            this.setState({ordered:true})
+            let stateObj = {...this.state}
+            let prevInventory = this.props.location.state.inventory
+            let order = this.props.location.state.orderObj
+            
+            stateObj.newInventory.ukInventory.maskQty = prevInventory.ukInventory.maskQty - order.ukInventory.maskQty 
+            stateObj.newInventory.ukInventory.glovesQty = prevInventory.ukInventory.glovesQty - order.ukInventory.glovesQty 
+            stateObj.newInventory.germanyInventory.maskQty = prevInventory.germanyInventory.maskQty - order.germanyInventory.maskQty 
+            stateObj.newInventory.germanyInventory.glovesQty = prevInventory.germanyInventory.glovesQty - order.germanyInventory.glovesQty 
+
+            stateObj.ordered = true
+            this.setState({...stateObj})
         alert(`CONGRATULATIONS!!! Orders Placed Succesfully
 Click on "Home Page" to Order Again`)
     }
@@ -208,7 +228,7 @@ Click on "Home Page" to Order Again`)
                     </div>                        
                     <div className='col-12 col-md-6 p-1'>
                         {this.state.ordered ?
-                            <Link to={{ pathname:'/', state:this.props.location.state }}>
+                            <Link to={{ pathname:'/', state:this.state.newInventory }}>
                                 <Button  name='Home Page'/>
                             </Link> :
                             <Link to='/'>
@@ -217,6 +237,7 @@ Click on "Home Page" to Order Again`)
                             }
                     </div>                        
                 </div>
+                {/* {console.log(this.props.location)} */}
             </>
          );
     }
