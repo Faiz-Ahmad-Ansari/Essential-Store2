@@ -10,11 +10,11 @@ class Homepage extends Component {
             products : [
                 {
                     name : 'Mask',
-                    description : 'A mask is an object normally worn on the face, typically for protection.  Masks have been used since antiquity for both ceremonial and practical purposes, as well as in the performing arts and for entertainment.',                
+                    description : 'A mask is an object normally worn on the face, typically for protection. ',                
                 },
                 {
                     name : 'Gloves',
-                    description : 'A glove is a garment covering the whole hand.Gloves usually have separate sheaths or openings for each finger and the thumb. If there is an opening but no covering sheath for each finger they are called fingerless gloves.',                    
+                    description : 'A glove is a garment covering the whole hand, typically for protection.',                    
                 },
             ],
             // Inventory
