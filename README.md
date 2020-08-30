@@ -7,10 +7,29 @@ Inventory Management of a recently a new online store opened on the internet tha
 
 ## Work Flow
 
-- Fill the mandatory details and click on checkout to get the price of items
+- Fill the mandatory details and click on checkout to get the price of items.
  (if no. of qty. exceeds then popup will appear to get the inventory details after clicking on checkout button ).
-- Then click on buy now to get order placed.(pop up will apear after succesful order placed)
-- Then Click on Home page to order again (PLEASE NOTE : NO. OF QTY. REDUCED IN INVENTORY)
+- Then click on buy now to get order placed.(pop up will apear after succesful order placed).
+- Then click on Home page to order again (PLEASE NOTE : NO. OF QTY. REDUCED IN INVENTORY).
+- The cycle repeats on each order placed.
+
+## Project Scenarios
+
+- Inventor management of new online store opened on internet that sells masks & gloves.
+- They are faced with an interesting problem of managing thier inventory accross 2 countries : UK & Germany.
+- Purpose of a program is to maintain inventory and minimize the sale price for online customers.
+- The prices are different based on the country where the inventory  is stored.
+- The in inventory in two countries is limited.
+- There are 100 mask in UK which have a sale price of 65£ for each whereas there are 100 in germany which have a sale price of 100£.
+- There are 100 gloves in UK which have a sale price of 100£ whereas there are 50 in germany which have a sale price of 150£.
+- For simplicity we will use GBP as our transaction currency.
+- The order should be fulfilled fully or not at all.
+- If the inventory from one country used up then item have to be fetched from another country.
+- There is transport cost involved when the items needs to shipped from one country to another incase the purchase country is different than the inventory country.
+- Shipping cost is 400£ for every 10 uints of item type (no mixing up of item types).
+- Transport cost is always in multiples of 10 units.
+- If customer passport belongs to local country then the customer will get 20% discount on the shipping charge.
+ 
 
 ## Available Scripts
 
